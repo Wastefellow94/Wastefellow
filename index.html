@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wastefellow - Music Composer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Imports -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bernhard+Antique&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ITC+Korinna:wght@400;700&display=swap">
+</head>
+<body>
+
+    <!-- Portrait Image with Large Logo Overlay -->
+    <div class="portrait-container">
+        <img src="assets_images/hands edit.jpg" alt="Wastefellow Portrait" class="portrait-image">
+        <img src="assets_images/PNG BANNER.png" alt="Wastefellow Logo" class="logo-overlay">
+    </div>
+
+    <!-- Main Text Section -->
+    <section class="main-text">
+        <p>Diolmhain Ingram Roche, known professionally as Wastefellow, is a Dublin-based composer and multimedia artist whose work spans film scores, audio-visual projects, and electronic music. His music walks a delicate line between ambience, sound design and raw emotional resonance, weaving clear musical motifs through textural landscapes that remain deeply human at their core.</p>
+    </section>
+
+   <!-- Audio Player Section -->
+    <div style="display: flex; justify-content: center;">
+        <iframe width="80%" height="450" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1959107213%3Fsecret_token%3Ds-0g6FODExdhf&color=%23000000&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+            style="background: transparent; border: none; filter: invert(1) brightness(1.2);"></iframe>
+    </div>
+
+    <!-- Video Gallery Section -->
+    <section class="video-gallery" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <div class="video-item" style="border: 10px solid black; padding: 5px; width: 45%;">
+            <a href="assets_videos/HOPEMCAULY_FILM_4K_554MB.mp4" class="play-video">
+                <img src="assets_images/HOPE.gif" alt="Video 3 Thumbnail" class="video-thumbnail" style="width: 100%;">
+                <div class="title-card">
+                    <p>Hope McCauley Knitwear dir. Eilís Doherty</p>
+                </div>
+            </a>
+        </div>
+        <div class="video-item" style="border: 10px solid black; padding: 5px; width: 45%;">
+            <a href="assets_videos/Practice Makes Perfect Instagram File.mp4" class="play-video">
+                <img src="assets_images/Practice Makes GIF.gif" alt="Video 3 Thumbnail" class="video-thumbnail" style="width: 100%;">
+                <div class="title-card">
+                    <p>'Practice Makes Perfect' dir. Ellius Grace</p>
+                </div>
+            </a>
+        </div>
+        <div class="video-item" style="border: 10px solid black; padding: 5px; width: 45%;">
+            <a href="assets_videos/ConnectedWebwise.mp4" target="_blank" class="play-video">
+                <img src="assets_images/WEBWISE.gif" alt="Video 3 Thumbnail" class="video-thumbnail" style="width: 100%;">
+                <div class="title-card">
+                    <p>'Webwise:Connected' dir. Hugh Mulhern</p>
+                </div>
+            </a>
+        </div>
+        <div class="video-item" style="border: 10px solid black; padding: 5px; width: 45%;">
+            <a href="https://vimeo.com/336078122" target="_blank" class="video-link">
+                <img src="assets_images/Panasonic.gif" alt="Video 2 Thumbnail" class="video-thumbnail" style="width: 100%;">
+                <div class="title-card">
+                    <p>'Virtue' for Panasonic X VICE dir. Hugh Mulhern</p>
+                </div>
+            </a>
+        </div>
+<div class="video-item" style="border: 10px solid black; padding: 5px; width: 45%;">
+            <a href="assets_videos/DISCORD.mp4" target="_blank" class="play-video">
+                <img src="assets_images/materialw.gif" alt="Video 2 Thumbnail" class="video-thumbnail" style="width: 100%;">
+                <div class="title-card">
+                    <p>Wastefellow - Tears in the Discord</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Wastefellow. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+    <!-- JavaScript for Video Playback -->
+    <script>
+        document.querySelectorAll('.play-video').forEach(function(videoLink) {
+            videoLink.addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Remove any existing video elements first
+                const existingVideo = document.querySelector('.active-video');
+                if (existingVideo) {
+                    existingVideo.pause();
+                    existingVideo.remove();
+                }
+
+                const videoUrl = this.getAttribute('href');
+                const videoElement = document.createElement('video');
+                videoElement.src = videoUrl;
+                videoElement.controls = false; // Initially hide controls
+                videoElement.autoplay = true;
+                videoElement.className = 'active-video';
+
+                // Adjust video size to fit within the viewport while maintaining aspect ratio
+                videoElement.style.maxWidth = '80%';
+                videoElement.style.maxHeight = '80vh'; // 80% of viewport height
+                videoElement.style.width = 'auto';
+                videoElement.style.height = 'auto';
+
+                videoElement.style.position = 'fixed';
+                videoElement.style.top = '50%';
+                videoElement.style.left = '50%';
+                videoElement.style.transform = 'translate(-50%, -50%)';
+                videoElement.style.zIndex = '9999';
+                videoElement.style.backgroundColor = 'black';
+
+                // Show controls on hover
+                videoElement.addEventListener('mouseover', function() {
+                    videoElement.controls = true;
+                });
+
+                // Hide controls when not hovering
+                videoElement.addEventListener('mouseout', function() {
+                    videoElement.controls = false;
+                });
+
+                document.body.appendChild(videoElement);
+
+                // Stop and remove video when clicking outside
+                function stopVideo(event) {
+                    if (!videoElement.contains(event.target)) {
+                        videoElement.pause();
+                        videoElement.remove();
+                        document.removeEventListener('click', stopVideo);
+                    }
+                }
+
+                setTimeout(function() {
+                    document.addEventListener('click', stopVideo);
+                }, 0);
+            });
+        });
+    </script>
+
+    <!-- JavaScript for Audio Playback -->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize WaveSurfer
+            const wavesurfer = WaveSurfer.create({
+                container: '#waveform',
+                waveColor: '#888',
+                progressColor: '#DBFFFE',
+                height: 150,
+                barWidth: 2,
+            });
+
+            // Load the first track
+            const playlistItems = document.querySelectorAll('.playlist-item');
+            let currentTrackIndex = 0;
+
+            function loadTrack(index) {
+                const track = playlistItems[index];
+                if (track) {
+                    const src = track.getAttribute('data-src');
+                    wavesurfer.load(src);
+                    currentTrackIndex = index;
+                }
+            }
+
+            loadTrack(currentTrackIndex);
+
+            // Play/Pause button
+            document.getElementById('playPause').addEventListener('click', () => {
+                if (wavesurfer.isPlaying()) {
+                    wavesurfer.pause();
+                    document.getElementById('playPause').textContent = 'Play';
+                } else {
+                    wavesurfer.play();
+                    document.getElementById('playPause').textContent = 'Pause';
+                }
+            });
+
+            // Stop button
+            document.getElementById('stop').addEventListener('click', () => {
+                wavesurfer.stop();
+                document.getElementById('playPause').textContent = 'Play';
+            });
+
+            // Playlist click event
+            playlistItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    loadTrack(index);
+                    wavesurfer.play();
+                    document.getElementById('playPause').textContent = 'Pause';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

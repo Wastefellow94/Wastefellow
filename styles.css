@@ -1,0 +1,176 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'ITC Korinna', sans-serif;
+    background-color: #000000;
+    color: #DBFFFEFF;
+    line-height: 1.6;
+}
+
+/* Portrait Image with Large Logo Overlay */
+.portrait-container {
+    position: relative;
+    text-align: center;
+    margin: 0px 0;
+}
+
+.portrait-image {
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.logo-overlay {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: auto;
+}
+
+/* Main Text Section */
+.main-text {
+    text-align: center;
+    margin: 10px auto;
+    max-width: 1000px;
+    font-size: 13pt;
+}
+
+/* Video Gallery Section */
+.video-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Distribute space evenly */
+    gap: 20px;
+    padding: 40px 20px;
+    background-color: #000000;
+}
+
+.video-item {
+    position: relative;
+    width: 45%; /* Adjusted to occupy roughly half the container */
+    max-width: 600px; /* Optional: Limit maximum width for larger screens */
+    height: auto;
+    overflow: hidden;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .video-item {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+.title-card {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    color: #DBFFFEFF;
+    text-align: center;
+    font-size: 14pt;
+    transition: bottom 0.3s ease-in-out;
+}
+
+.video-item:hover .title-card {
+    bottom: 0;
+}
+
+/* Audio Player Container Styling */
+.audio-player-container {
+    width: 80%; /* Same width as the video gallery */
+    max-width: 1200px; /* Consistent maximum width with the video gallery */
+    margin: 50px auto; /* Center the container and add vertical margin */
+    text-align: center;
+}
+
+/* Waveform Styling */
+.waveform {
+    width: 100%;
+    height: 150px;
+    background: #333;
+    margin-bottom: 20px;
+}
+
+/* Playlist Styling */
+.playlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Playlist Item Styling */
+.playlist-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    color: #DBFFFE;
+    font-family: 'ITC Korinna', sans-serif;
+}
+
+.playlist-item:hover {
+    background-color: #555;
+}
+
+/* Controls Styling */
+.controls {
+    margin: 20px 0;
+}
+
+.controls button {
+    background: #444;
+    border: none;
+    color: #DBFFFE;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+    font-family: 'Bernhard Antique', serif;
+}
+
+.controls button:hover {
+    background: #666;
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    padding: 20px;
+    background-color: #111111;
+    margin-top: 50px; /* Ensure space between audio player and contact section */
+}
+
+/* Contact Text */
+.contact p {
+    font-size: 14pt;
+    color: #DBFFFEFF;
+}
+
+.contact a {
+    color: #DBFFFEFF;
+    text-decoration: none;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #000000;
+    color: #DBFFFE;
+    text-align: center;
+    padding: 20px;
+    font-family: 'ITC Korinna', sans-serif;
+    position: relative;
+    z-index: 1; /* Ensure footer is above other content */
+}
